@@ -134,7 +134,7 @@ class ModsProcess(QtCore.QThread):
             
             # if self.thread_active: self.makeItemModelFixes()
             # if self.thread_active: self.makeItemTextBoxes()
-            
+
             if self.settings['blupsanity'] and self.thread_active:
                 self.makeLv10RupeeChanges()
 
@@ -153,7 +153,7 @@ class ModsProcess(QtCore.QThread):
 
             if self.settings['open-mabe'] and self.thread_active:
                 self.openMabe()
-            
+
             if self.thread_active: self.fixWaterLoadingZones()
             if self.thread_active: self.fixRapidsRespawn()
             
@@ -310,7 +310,7 @@ class ModsProcess(QtCore.QThread):
                 act.switches[1] = (1, 363) # index of the getflag, which is now unused0363
             else:
                 item_key, item_index, model_path, model_name = self.getItemInfo(room, self.dungeon_trap_models)
-                        
+
             small_keys.writeKeyEvent(flow.flowchart, item_key, item_index, room)
             room_data.setSmallKeyParams(model_path, model_name, room, item_key)
             self.writeFile(f'{data.SMALL_KEY_ROOMS[room]}.leb', room_data)
@@ -514,7 +514,7 @@ class ModsProcess(QtCore.QThread):
 
         flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
             {'symbol': data.GORIYA_FLAG, 'value': True}, 'Event4')
-        
+
         item_key, item_index = self.getItemInfo('goriya-trader')
         item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event87', flag_event)
 
@@ -1090,6 +1090,12 @@ class ModsProcess(QtCore.QThread):
         if self.thread_active:
             flow = self.readFile('Common.bfevfl')
 
+            # Disables death counter to force perfect ending
+            if self.settings['perfect-ending']:
+                event_tools.removeEventAfter(flow.flowchart, 'Event62')
+                event_tools.removeEventAfter(flow.flowchart, 'Event42')
+                event_tools.insertEventAfter(flow.flowchart, 'Event62', 'Event63')
+
             event_tools.setSwitchEventCase(flow.flowchart, 'Event64', 1,
                 event_tools.createActionEvent(flow.flowchart, 'GameControl', 'RequestLevelJump',
                     {'level': 'Field', 'locator': 'Field_11C', 'offsetX': 0.0, 'offsetZ': 0.0},
@@ -1170,7 +1176,7 @@ class ModsProcess(QtCore.QThread):
             
             if dummy is None:
                 raise KeyError('ItemYoshiDoll was not found in Items.gsheet')
-            
+
             # create new entries for Dampe, which we will use to set the gettingFlag
             # can likely use this same method for trendy and shop in the future
             dummy['symbol'] = 'Dampe1'
@@ -1252,7 +1258,7 @@ class ModsProcess(QtCore.QThread):
             sheet['values'].append(oead_tools.dictToStruct(dummy))
 
             self.writeFile('Items.gsheet', sheet)
-        
+
         if self.thread_active:
             sheet = self.readFile('Conditions.gsheet')
 
@@ -1280,7 +1286,7 @@ class ModsProcess(QtCore.QThread):
             sheet = self.readFile('GlobalFlags.gsheet')
             sheet, self.global_flags = flags.makeFlags(sheet)
             self.writeFile('GlobalFlags.gsheet', sheet)
-        
+
         if self.settings['fast-fishing'] and self.thread_active:
             sheet = self.readFile('FishingFish.gsheet')
 
@@ -1328,9 +1334,9 @@ class ModsProcess(QtCore.QThread):
             for zone in level.zones:
                 if zone.bgm in self.songs_dict:
                     zone.bgm = self.songs_dict[zone.bgm]
-            
+
             self.writeFile(f'{folder}.lvb', level)
-        
+
         # edit music that is played through events
         if self.thread_active:
             self.makeEventMusicChanges()
@@ -1402,7 +1408,7 @@ class ModsProcess(QtCore.QThread):
             event_tools.setEventSong(flow.flowchart, 'Event56', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             event_tools.setEventSong(flow.flowchart, 'Event6', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             self.writeFile('MightPunch.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('PiccoloMaster.bfevfl')
             event_tools.setEventSong(flow.flowchart, 'Event48', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
@@ -1415,7 +1421,7 @@ class ModsProcess(QtCore.QThread):
             event_tools.setEventSong(flow.flowchart, 'Event20', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             event_tools.setEventSong(flow.flowchart, 'Event1', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             self.writeFile('Rola.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('Shadow.bfevfl')
             # event_tools.setEventSong(flow.flowchart, 'Event6', self.songs_dict['BGM_LASTBOSS_DEMO_TEXT'])
@@ -1424,26 +1430,26 @@ class ModsProcess(QtCore.QThread):
             event_tools.setEventSong(flow.flowchart, 'Event71', self.songs_dict['BGM_LASTBOSS_BATTLE'])
             # event_tools.setEventSong(flow.flowchart, 'Event44', self.songs_dict['BGM_LASTBOSS_DEMO_TEXT'])
             self.writeFile('Shadow.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('StoneHinox.bfevfl')
             event_tools.setEventSong(flow.flowchart, 'Event4', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             event_tools.setEventSong(flow.flowchart, 'Event35', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             event_tools.setEventSong(flow.flowchart, 'Event29', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
             self.writeFile('StoneHinox.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('ToolShopkeeper.bfevfl')
             event_tools.setEventSong(flow.flowchart, 'Event87', self.songs_dict['BGM_DUNGEON_BOSS'])
             self.writeFile('ToolShopkeeper.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('TurtleRock.bfevfl')
             event_tools.setEventSong(flow.flowchart, 'Event1', self.songs_dict['BGM_DUNGEON_LV8_ENT_BATTLE'])
             event_tools.setEventSong(flow.flowchart, 'Event26', self.songs_dict['BGM_DUNGEON_LV8_ENT_BATTLE'])
             event_tools.setEventSong(flow.flowchart, 'Event11', self.songs_dict['BGM_DUNGEON_LV8_ENT_BATTLE'])
             self.writeFile('TurtleRock.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('WindFish.bfevfl')
             event_tools.setEventSong(flow.flowchart, 'Event73', self.songs_dict['BGM_DEMO_AFTER_LASTBOSS'])
@@ -1485,7 +1491,7 @@ class ModsProcess(QtCore.QThread):
                 break
 
             room_data = self.readFile(f'{data.INSTRUMENT_ROOMS[room]}.leb')
-            
+
             item_key, item_index, model_path, model_name = self.getItemInfo(room, self.dungeon_trap_models)
 
             if self.settings['shuffle-dungeons']:
@@ -1499,10 +1505,10 @@ class ModsProcess(QtCore.QThread):
                         destination = d[2] + d[3]
             else:
                 destination = None
-            
+
             instruments.changeInstrument(flow.flowchart, item_key, item_index, model_path, model_name,
                 room, room_data, destination)
-            
+
             self.writeFile(f'{data.INSTRUMENT_ROOMS[room]}.leb', room_data)
         
         self.writeFile('SinkingSword.bfevfl', flow)
@@ -1531,7 +1537,7 @@ class ModsProcess(QtCore.QThread):
             item_key, item_index, model_path, model_name = self.getItemInfo(room, self.trap_models)
             heart_pieces.changeHeartPiece(flow.flowchart, item_key, item_index, model_path, model_name, room, room_data)
             self.writeFile(f'{data.HEART_ROOMS[room]}.leb', room_data)
-        
+
         self.writeFile('SinkingSword.bfevfl', flow)
 
 
@@ -1637,9 +1643,9 @@ class ModsProcess(QtCore.QThread):
 
     def makeShopChanges(self):
         """Edits the shop items datasheet as well as event files relating to buying/stealing
-        
+
         NOT FINISHED!!!
-        
+
         This needs ASM to set the GettingFlag of the stolen items"""
 
         if self.thread_active:
@@ -1673,17 +1679,17 @@ class ModsProcess(QtCore.QThread):
             flow = self.readFile('QuadrupletsMother.bfevfl')
             trade_quest.mamashaChanges(flow.flowchart, self.getItemInfo('mamasha'))
             self.writeFile('QuadrupletsMother.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('RibbonBowWow.bfevfl')
             trade_quest.ciaociaoChanges(flow.flowchart, self.getItemInfo('ciao-ciao'))
             self.writeFile('RibbonBowWow.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('Sale.bfevfl')
             trade_quest.saleChanges(flow.flowchart, self.getItemInfo('sale'))
             self.writeFile('Sale.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('Kiki.bfevfl')
             item_key, item_index, model_path, model_name = self.getItemInfo('kiki', self.trap_models)
@@ -1716,7 +1722,7 @@ class ModsProcess(QtCore.QThread):
             # if self.settings['randomize-music']:
             #     event_tools.findEvent(flow.flowchart, 'Event113').data.params.data['label'] = self.songs_dict['BGM_EVENT_BEE']
             self.writeFile('Tarin.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('ChefBear.bfevfl')
             trade_quest.chefChanges(flow.flowchart, self.getItemInfo('chef-bear'))
@@ -1751,7 +1757,7 @@ class ModsProcess(QtCore.QThread):
             flow = self.readFile('MermaidMartha.bfevfl')
             trade_quest.mermaidChanges(flow.flowchart, self.getItemInfo('mermaid-martha'))
             self.writeFile('MermaidMartha.bfevfl', flow)
-        
+
         if self.thread_active:
             flow = self.readFile('MarthaStatue.bfevfl')
             trade_quest.statueChanges(flow.flowchart)
@@ -1999,7 +2005,7 @@ class ModsProcess(QtCore.QThread):
 
     def fixWaterLoadingZones(self):
         """Changes each water loading zone to be deactivated until the player has flippers
-        
+
         This is to prevent the player from potentially softlocking by entering them with the rooster"""
 
         for room in data.WATER_LOADING_ZONES:
@@ -2079,14 +2085,14 @@ class ModsProcess(QtCore.QThread):
 
         if trap_models is None:
             return item_key, item_index
-        
+
         if item_key[-4:] != 'Trap':
             model_path = self.item_defs[item]['model-path']
             model_name = self.item_defs[item]['model-name']
         else:
             model_name = random.choice(list(trap_models))
             model_path = trap_models[model_name]
-        
+
         return item_key, item_index, model_path, model_name
 
 
@@ -2099,20 +2105,20 @@ class ModsProcess(QtCore.QThread):
         file_path = f'{self.romfs_dir}/{dir}/{file_name}'
         if file_name not in self.out_files:
             file_path = f'{self.rom_path}/{dir}/{file_name}'
-        
+
         if return_path:
             return file_path
-        
+
         if file_name.endswith('bfevfl'):
             return event_tools.readFlow(file_path)
         elif file_name.endswith('gsheet'):
             return oead_tools.readSheet(file_path)
         elif file_name.endswith('arc'):
             return oead_tools.SARC(file_path)
-        
+
         with open(file_path, 'rb') as f:
             file_data = f.read()
-        
+
         if file_name.endswith('leb'):
             return leb.Room(file_data)
         elif file_name.endswith('lvb'):
@@ -2166,5 +2172,5 @@ class ModsProcess(QtCore.QThread):
             dir = 'region_common/ui'
         else:
             return None
-        
+
         return dir

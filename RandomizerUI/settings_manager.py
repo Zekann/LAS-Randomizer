@@ -53,6 +53,7 @@ BASE_OPTIONS = {
     'stealingComboBox': 0, # May change, but players often feel frustrated at not being able to steal, not knowing sword is needed
     'chestAnimationsCheck': True,
     'keyAnimationsCheck': True,
+    'perfectEndingCheck': False,
     'rupeesSpinBox': 0,
     'starting_gear': ['sword', 'shield', 'ocarina', 'song-mambo']
 }
@@ -416,6 +417,7 @@ def loadRandomizerSettings(window, seed):
         'stealing': STEALING_REQUIREMENTS[window.ui.stealingComboBox.currentIndex()],
         'fast-chests': window.ui.chestAnimationsCheck.isChecked(),
         'fast-keys': window.ui.keyAnimationsCheck.isChecked(),
+        'perfect-ending': window.ui.perfectEndingCheck.isChecked(),
         'starting-items': window.starting_gear,
         'starting-rupees': window.ui.rupeesSpinBox.value(),
         'excluded-locations': window.excluded_checks
