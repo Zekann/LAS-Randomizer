@@ -1,7 +1,8 @@
 import os
 import re
 import shutil
-from RandomizerCore.Data.randomizer_data import VERSION, EXTRA_TITLE_DATA
+from RandomizerCore.randomizer_data import VERSION, EXTRA_TITLE_DATA
+
 import glob
 import sys
 

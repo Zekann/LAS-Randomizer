@@ -1,7 +1,7 @@
 from PySide6 import QtCore
 import urllib.request as lib
 
-from RandomizerCore.Data.randomizer_data import VERSION, LOGIC_VERSION, AUTHOR, MAIN_BRANCH
+from RandomizerCore.randomizer_data import VERSION, LOGIC_VERSION, AUTHOR, MAIN_BRANCH
 
 
 class UpdateProcess(QtCore.QThread):
