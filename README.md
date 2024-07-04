@@ -1,7 +1,31 @@
 # LAS-Randomizer
 A randomizer for The Legend of Zelda: Link's Awakening remake.
 
-You can download the randomizer here: https://github.com/Owen-Splat/LAS-Randomizer/releases/latest
+This repository is a **modded version of the original randomizer made by Owen that adds some features**
+
+**Latest modded release is available here** : https://github.com/ProfessorLaw/LAS-Randomizer/releases/latest
+
+## Main changes currently in testing phase
+
+- TBD
+
+## Feature and changes added to the main version
+
+- **Chest Size & Texture** : You can choose between normal, size matching content and texture matching content chests !
+- **Extra consumable drops** : Bombs, Magic Powder and Arrows will drop from grass if this setting is enable
+- **Starting Dungeon Items** : You can now choose to start with nothing, Maps & Compass, or Maps, Compass & Beaks as dungeon items!
+- **Perfect ending** : You can force the perfect ending to show at the end of the game even if you get a game over.
+- **Open Mabe** : This setting allows you to get out of the village without any items. This opens access to Beach, Woods & Plains (3 to 4 locations)
+- **Quick Mode** : This setting makes most boss intro skipped, textbox skips and faster animations. **This is still a work in progress !**
+
+**More to come in the future !**
+### Donate:
+
+If you want to support my additions on this randomizer, feel free to buy me a coffee ! 
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P77VZ2L)
+
+Note: Owen being the main maintainer of the randomizer, I suggest you to support him too if you like his work !
 
 ## Information
 This randomizes all the items in the game so that every playthrough is unique. It also aims to add quality of life changes, such as skipping cutscenes, or adding options that make the game more open-world.
@@ -25,10 +49,10 @@ The Discord also contains some more detailed information about the current state
 https://discord.com/invite/rfBSCUfzj8
 
 ## Credits:
+- [Owen-Splat](https://github.com/Owen-Splat/LAS-Randomizer) for being the main maintainer of the randomizer and helped me a lot to get started with it !
 - Glan: Created the original early builds of the randomizer found here: https://github.com/la-switch/LAS-Randomizer
 - j_im: Created the original tracker for the randomizer
 - Br00ty: Maintains and updates the tracker for newer randomizer versions
-- ProfessorLaw: Additional programming
 - theboy181: Blur removal patch
 
 ### Special Thanks:
