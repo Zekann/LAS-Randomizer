@@ -5,14 +5,18 @@ This repository is a **modded version of the original randomizer made by Owen th
 
 **Latest modded release is available here** : https://github.com/ProfessorLaw/LAS-Randomizer/releases/latest
 
-## Main changes
+## Main changes currently in testing phase
+
+- TBD
+
+## Feature and changes added to the main version
 
 - **Chest Size & Texture** : You can choose between normal, size matching content and texture matching content chests !
 - **Extra consumable drops** : Bombs, Magic Powder and Arrows will drop from grass if this setting is enable
 - **Starting Dungeon Items** : You can now choose to start with nothing, Maps & Compass, or Maps, Compass & Beaks as dungeon items!
 - **Perfect ending** : You can force the perfect ending to show at the end of the game even if you get a game over.
-- **Open Mabe (experimental)** : This setting allows you to get out of the village without any items. This opens access to Beach, Woods & Plains (3 to 4 locations)
-- **Quick Mode (experimental)** : This setting makes most boss intro skipped, textbox skips and faster animations. **This is still a work in progress !**
+- **Open Mabe** : This setting allows you to get out of the village without any items. This opens access to Beach, Woods & Plains (3 to 4 locations)
+- **Quick Mode** : This setting makes most boss intro skipped, textbox skips and faster animations. **This is still a work in progress !**
 
 **More to come in the future !**
 ### Donate:
@@ -36,19 +40,7 @@ This randomizes all the items in the game so that every playthrough is unique. I
 Please note that while most things are functional, there is a possibility of the logic resulting in softlocks. This will be especially true with the glitched logics. If this does happen, dying and selecting the Save + Quit option will respawn you back at Marin's house.
 
 ## How to play:
-In order to play the randomizer, you must have the RomFS of the game extracted and on the device you're running this program from. This can be extracted through your choice of emulator, or with nxdumptool on a homebrewed Switch console. After you have extracted the RomFS, keep it somewhere where you will not lose it!
-
-Set the RomFS Path to the folder where you extracted the RomFS.
-
-Set the Output Path to the folder where you want the edited files to go. On Emulator, you can right-click the game and open mods directory to get the path.
-
-The Seed can be anything you want it to be, or just left blank.
-
-### Switch
-Set the output platform to `Console`. Copy and paste the `Atmosphere` folder from the output to the root of your SD card. I'd recommend to use a file transfer homebrew app to avoid needing to take the SD card out and relaunch CFW each time. The number of files will differ depending on settings, so clear out any old files first.
-
-### Emulator
-Set the output platform to `Emulator` and set the output path to the emulator's mod directory (see above) for Link's Awakening. After creating a seed, simply just enable it in the emulator and enjoy playing! You **MUST** play on version 1.0.0 otherwise the exefs patches will not work on emulator.
+Please refer to the setup wiki: https://github.com/Owen-Splat/LAS-Randomizer/wiki/Setup-Instuctions
 
 ## Discord Server
 Join the Discord server to talk about the randomizer, ask questions, or even set up races!  
@@ -61,6 +53,7 @@ https://discord.com/invite/rfBSCUfzj8
 - Glan: Created the original early builds of the randomizer found here: https://github.com/la-switch/LAS-Randomizer
 - j_im: Created the original tracker for the randomizer
 - Br00ty: Maintains and updates the tracker for newer randomizer versions
+- theboy181: Blur removal patch
 
 ### Special Thanks:
 - To everyone who has reported bugs or given feedback and suggestions. This randomizer would not be where it is today without our community.
@@ -70,16 +63,16 @@ https://discord.com/invite/rfBSCUfzj8
 
 If you want to run from source, then you need to clone this repository and make sure you have Python 3.8+ installed
 
-Open the folder in a command prompt and install dependencies by running:  
-`py -3.8 -m pip install -r requirements.txt` (on Windows)  
-`python3 -m pip install -r requirements.txt` (on Mac)  
+Open the folder in a command prompt and install dependencies by running:
+`py -3.8 -m pip install -r requirements.txt` (on Windows)
+`python3 -m pip install -r requirements.txt` (on Mac)
 `python3 -m pip install $(cat requirements.txt) --user` (on Linux)
 
-Then run the randomizer with:  
-`py -3.8 randomizer.py` (on Windows)  
-`python3 randomizer.py` (on Mac)  
-`python3 randomizer.py` (on Linux)  
+Then run the randomizer with:
+`py -3.8 randomizer.py` (on Windows)
+`python3 randomizer.py` (on Mac)
+`python3 randomizer.py` (on Linux)
 
-If you are using a higher version of Python, change the commands to include your version instead
+If you are using a different version of Python, change the commands to include your version instead
 
 Once you have installed all the requirements, there is an included **build.bat** file. Run that (you can just enter `build` in the terminal) and it will automatically enter the commands to create a build. Once again, if you are using a different version of Python, you will need to edit this file to match your version
