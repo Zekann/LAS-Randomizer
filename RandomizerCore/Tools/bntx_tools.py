@@ -105,7 +105,7 @@ def createChestBfresWithCustomTexturesIfMissing(chestBfresPath, bfresOutputFolde
         os.makedirs(bfresOutputFolder)
 
     # Checking if we need to generate something
-    textureTypes = ['Junk', 'Key', 'LifeUpgrade']
+    textureTypes = ['Junk', 'Key', 'LifeUpgrade', 'Seashell']
     missingTextureTypes = []
 
     for textureType in textureTypes:

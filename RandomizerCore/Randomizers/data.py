@@ -499,7 +499,8 @@ CHEST_TEXTURES = {
     'default': 'ObjTreasureBox.bfres',
     'junk': "ObjTreasureBoxJunk.bfres",
     'life-upgrade': "ObjTreasureBoxLifeUpgrade.bfres",
-    'key': "ObjTreasureBoxKey.bfres"
+    'key': "ObjTreasureBoxKey.bfres",
+    'seashell': "ObjTreasureBoxSeashell.bfres"
 }
 
 MODEL_SIZES = {

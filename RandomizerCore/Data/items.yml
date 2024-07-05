@@ -327,6 +327,7 @@ Item_Pool:
     model-path: ItemSecretSeashell.bfres
     model-name: SecretSeashell
     npc-key: ItemSecretSeashell
+    chest-type: seashell
   bottle:
     type: important-health
     quantity: 3
@@ -371,6 +372,7 @@ Item_Pool:
     model-path: ItemShellRader.bfres
     model-name: ShellRader
     npc-key: ItemShellRader
+    chest-type: seashell
   medicine:
     type: important-health
     quantity: 3
