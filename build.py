@@ -19,7 +19,7 @@ freeze_path = freeze_path_search.pop()
 platform_re = re.search(r"exe\.(.*)-.*-.*[0-9]\.[0-9]", freeze_path)
 destination_platform = platform_re.group(1)
 
-base_name = f"LAS Randomizer v{VERSION} {destination_platform} {EXTRA_TITLE_DATA}"
+base_name = f"LAS Randomizer v{VERSION} {destination_platform}"
 
 release_path = os.path.join(build_path, base_name)
 os.rename(freeze_path, release_path)
