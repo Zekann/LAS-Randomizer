@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: updated-version-data
-          path: RandomizerCore/Data/randomizer_data.py
+          path: RandomizerCore/randomizer_data.py
 
   # Application build (For every OS)
   build:
