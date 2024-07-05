@@ -7,7 +7,8 @@ This repository is a **modded version of the original randomizer made by Owen th
 
 ## Main changes currently in testing phase
 
-- Re-implemented seashell textured chests (Blue ones)
+- **Perfect ending** : You can force the perfect ending to show at the end of the game even if you get a game over.
+- Re-implemented **seashell textured chests** (Blue ones)
 - More to come soon !
 
 ## Feature and changes added to the main version
@@ -15,7 +16,6 @@ This repository is a **modded version of the original randomizer made by Owen th
 - **Chest Size & Texture** : You can choose between normal, size matching content and texture matching content chests !
 - **Extra consumable drops** : Bombs, Magic Powder and Arrows will drop from grass if this setting is enable
 - **Starting Dungeon Items** : You can now choose to start with nothing, Maps & Compass, or Maps, Compass & Beaks as dungeon items!
-- **Perfect ending** : You can force the perfect ending to show at the end of the game even if you get a game over.
 - **Open Mabe** : This setting allows you to get out of the village without any items. This opens access to Beach, Woods & Plains (3 to 4 locations)
 - **Quick Mode** : This setting makes most boss intro skipped, textbox skips and faster animations. **This is still a work in progress !**
 
