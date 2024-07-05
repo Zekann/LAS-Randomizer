@@ -7,7 +7,8 @@ This repository is a **modded version of the original randomizer made by Owen th
 
 ## Main changes currently in testing phase
 
-- TBD
+- Re-implemented seashell textured chests (Blue ones)
+- More to come soon !
 
 ## Feature and changes added to the main version
 
