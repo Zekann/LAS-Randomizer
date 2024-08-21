@@ -24,7 +24,7 @@ jobs:
     needs : prepare-build-files
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest, macos-13, ubuntu-latest]
         #os: [windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
