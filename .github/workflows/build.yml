@@ -97,10 +97,10 @@ jobs:
           automatic_release_tag: "${{ github.ref_name }}"
           title: "Release ${{ github.ref_name }}"
           files: |
-            "build/*.zip"
-            "build/*.dmg"
-            "LICENSE.txt"
-            "README.txt"
+            build/*.zip
+            build/*.dmg
+            LICENSE.txt
+            README.txt
 
 
   # Artifact Cleanup (to avoid too much storage)
