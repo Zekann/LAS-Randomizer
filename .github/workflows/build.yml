@@ -43,14 +43,14 @@ jobs:
           path: RandomizerCore
       - run: mkdir build
       - run: |
-              if "$RUNNER_OS" == "macOS" then
-                python setup.py bdist_dmg
+              if [ "$RUNNER_OS" == "macOS" ]; then
+                  python setup.py bdist_dmg
               else
-                python setup.py build
+                  python setup.py build
               fi
       - run: |
-              if "$RUNNER_OS" != "macOS" then
-                python build.py
+              if [ "$RUNNER_OS" != "macOS" ]; then
+                  python build.py
               fi
       - uses: actions/upload-artifact@v4
         with:
