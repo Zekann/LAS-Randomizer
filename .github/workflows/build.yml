@@ -24,8 +24,8 @@ jobs:
     needs : prepare-build-files
     strategy:
       matrix:
-        os: [windows-latest, macos-13, ubuntu-latest]
-        #os: [windows-latest, ubuntu-latest]
+        #os: [windows-latest, macos-13, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "Preparing '${{ github.event.ref }}' for release"
@@ -100,7 +100,7 @@ jobs:
             build/*.zip
             build/*.dmg
             LICENSE.txt
-            README.txt
+            README.md
 
 
   # Artifact Cleanup (to avoid too much storage)
