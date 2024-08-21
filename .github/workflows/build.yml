@@ -37,6 +37,8 @@ jobs:
       # Force upgrading pip (Might be removed at some point)
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
+        env:
+          PIP_CONSTRAINT: cython_constraint.txt
       - uses: actions/download-artifact@v4
         with:
           name: updated-version-data
