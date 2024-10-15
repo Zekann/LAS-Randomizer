@@ -1,6 +1,7 @@
 import sys
 from cx_Freeze import setup, Executable
 from RandomizerCore.randomizer_data import VERSION
+from py2app import setup as macsetup
 
 build_exe_options = {"packages": ["os"], 
                     "excludes": ["tkinter", "unittest", "sqlite3", "numpy", "matplotlib", "zstandard"],
@@ -11,6 +12,17 @@ build_exe_options = {"packages": ["os"],
 base = None
 if sys.platform == "win32":
     base = "Win32GUI"
+
+elif sys.platform == "darwin":
+    APP = ['randomizer.py']
+    DATA_FILES = ['RandomizerUI/Resources/icon.icns']
+    OPTIONS = {'argv_emulation': True}
+    macsetup(
+        app=APP,
+        data_files=DATA_FILES,
+        options={'py2app': OPTIONS},
+        setup_requires=['py2app']
+    )
 
 build_icon = "RandomizerUI/Resources/icon.ico"
 if sys.platform == "darwin": # mac
